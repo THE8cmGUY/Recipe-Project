@@ -27,6 +27,33 @@ def recipies(request):
         
     
     return render(request , 'recipe.html' , context)
+
+
+def update_recipes(request , id):
+    queryset = Receipe.objects.get(id=id)
+    if request.method == 'POST':
+        data = request.POST
+        
+        recipe_name = data.get('receipe_name')
+        recipe_desc = data.get('receipe_des')
+        recipe_image = request.FILES.get('receipe_image')
+        queryset.receipe_name = recipe_name
+        queryset.receipe_des = recipe_desc
+        if recipe_image:
+            queryset.receipe_image = recipe_image
+        queryset.save()
+        return redirect('/recipies/')
+        
+    context = {'recipe':queryset}
+    return render(request , 'update_recipes.html' , context)
+    
+    
+    
+    
+    
+    
+    
+    
 def delete_recipies(request , id):
     queryset = Receipe.objects.get(id=id)
     queryset.delete()
