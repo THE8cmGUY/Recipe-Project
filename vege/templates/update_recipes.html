@@ -16,7 +16,7 @@
             <div class="row mb-3">
               <label for="inputEmail3" class="form-label">Recipe Name</label>
               
-                <input type="text" class="form-control" name ="receipe_name"  required>
+                <input type="text" class="form-control" name ="receipe_name" >
               
             </div>
             <div class="row mb-3">
@@ -35,33 +35,7 @@
             
             <button type="submit" class="btn btn-success">Add Recipe</button>
           </form>
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Recipe Name</th>
-                <th scope="col">Recipe Description</th>
-                <th scope="col">Recipe Image</th>
-                <th scope = "col">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for recipe in receipes %}
-              <tr>
-                <th scope="row">{{forloop.counter}}</th>
-                <td>{{recipe.receipe_name}}</td>
-                <td>{{recipe.receipe_des}}</td>
-                <td><img src="/media/{{recipe.receipe_image}}" height="100"></td>
-                <td>
-                  <a href = "/delete_recipies/{{recipe.id}}" class = "btn btn-danger m-2">Delete Recipe</a>
-                  <a href = "/update_recipies/{{recipe.id}}" class = "btn btn-dark">Update Recipe</a>
-                </td>
-              </tr>
-              {% endfor %}
-              
-              
-            </tbody>
-          </table>
+         
     </div>
     
 
