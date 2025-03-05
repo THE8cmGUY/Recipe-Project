@@ -74,7 +74,6 @@ def register(request):
         username = data.get('username')  # Add this line
         user = User.objects.create(
             username=username,  # Include username in user creation
-
             first_name = first_name,
             last_name = last_name,
             email = email,
@@ -84,3 +83,10 @@ def register(request):
         print(user.first_name)
         return redirect('/register/')
     return render(request , 'register.html')
+def login_user(request):
+    if request.method == 'POST':
+        data = request.POST
+        username  = data.get('username')
+        password = data.get('password')
+        
+    return render(request , 'login.html')
